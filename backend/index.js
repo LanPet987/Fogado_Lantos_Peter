@@ -5,16 +5,18 @@ const mysql = require('mysql2');
 
 
 const cors = require('cors');
+const e = require('express');
 app.use(cors());
 app.use(express.json());
 
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'fogado',
-    port: 3306
+const db = mysql.createPool({
+    host: process.env.DB_Host,
+    user: process.env.DB_User,
+    password: process.env.DB_Password,
+    database: process.env.DB_Name,
+    port: process.env.DB_Port
+    
 });
 
 app.get('/teszt', (req, res) => {
