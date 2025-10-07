@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const mysql = require('mysql2');
+require('dotenv').config();
 
 
 const cors = require('cors');
-const e = require('express');
 app.use(cors());
 app.use(express.json());
 
@@ -20,7 +20,7 @@ const db = mysql.createPool({
 });
 
 app.get('/teszt', (req, res) => {
-    sql = "SELECT 1 + 1 AS result";
+    const sql = "SELECT 1 + 1 AS result";
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -28,7 +28,31 @@ app.get('/teszt', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Ez a főoldal');
+});
+
+app.get('/szobak', (req, res) => {
+    const sql = 'Select szobak.sznev as "Szoba neve", szobak.agy as "Ágyak száma" from szobak'
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.get('/foglalasok', (req, res) => {
+    const sql = "SELECT foglalasok.szoba, SUM(foglalasok.fo) as vendégek, DATEDIFF(foglalasok.tav, foglalasok.erk) AS vendégéjszakák from foglalasok GROUP BY DATEDIFF(foglalasok.tav,foglalasok.erk) ASC";
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.get('/szobafoglaltsag', (req, res) => {
+    const sql = "SELECT vendegek.vnev AS név, foglalasok.erk as érkezés, foglalasok.tav as távozás FROM foglalasok INNER JOIN vendegek ON foglalasok.vendeg = vendegek.vsorsz GROUP BY vendegek.vnev ASC";
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
 });
 
 app.listen(port, () => {
