@@ -19,20 +19,12 @@ const db = mysql.createPool({
     
 });
 
-app.get('/teszt', (req, res) => {
-    const sql = "SELECT 1 + 1 AS result";
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        res.send(result);
-    });
-});
-
 app.get('/', (req, res) => {
     res.send('Ez a főoldal');
 });
 
 app.get('/szobak', (req, res) => {
-    const sql = 'Select szobak.sznev as "Szoba neve", szobak.agy as "Ágyak száma" from szobak'
+    const sql = 'Select * from szobak'
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.send(result);

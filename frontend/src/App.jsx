@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import './App.css'
+import './css/App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Szobak from './components/szobak.jsx'
 import CustomNavbar from './components/Navbar.jsx'
+import Fooldal from './oldalak/Fooldal.jsx'
+
 
 function App() {
 
@@ -11,7 +13,7 @@ function App() {
       <CustomNavbar />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<h1>Főoldal</h1>} />
+          <Route path='/' element={<Fooldal/>} />
           <Route path='/szobak' element={<Szobak />} />
           <Route path='/foglalas' element={<h1>Foglalás</h1>} />
           <Route path='/szobafoglaltsag' element={<h1>Szobafoglaltság</h1>} />
