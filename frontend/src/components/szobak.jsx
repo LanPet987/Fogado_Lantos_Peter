@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/table.css"
+import "../css/szobak.css"
 
 function Szobak() {
     const [szobak, setSzobak] = useState([]);
@@ -18,7 +19,7 @@ function Szobak() {
     }, []);
 
     return (
-        <div>
+        <div id="igazitas">
             <h2>Szobák listája</h2>
             <table>
                 <thead>

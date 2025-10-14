@@ -32,7 +32,7 @@ app.get('/szobak', (req, res) => {
 });
 
 app.get('/foglalasok', (req, res) => {
-    //SELECT foglalasok.szoba, SUM(foglalasok.fo) as vendégek, DATEDIFF(foglalasok.tav, foglalasok.erk) AS vendégéjszakák from foglalasok GROUP BY DATEDIFF(foglalasok.tav,foglalasok.erk) ASC
+    //Create View foglalas as SELECT foglalasok.szoba, SUM(foglalasok.fo) as vendégek, DATEDIFF(foglalasok.tav, foglalasok.erk) AS vendégéjszakák from foglalasok GROUP BY DATEDIFF(foglalasok.tav,foglalasok.erk) ASC
     const sql = "select * from foglalas";
     db.query(sql, (err, result) => {
         if (err) throw err;
@@ -41,7 +41,7 @@ app.get('/foglalasok', (req, res) => {
 });
 
 app.get('/szobafoglaltsag', (req, res) => {
-    //vendegek.vnev AS név, foglalasok.erk as érkezés, foglalasok.tav as távozás FROM foglalasok INNER JOIN vendegek ON foglalasok.vendeg = vendegek.vsorsz GROUP BY vendegek.vnev ASC
+    //Create View foglaltsag as vendegek.vnev AS név, foglalasok.erk as érkezés, foglalasok.tav as távozás FROM foglalasok INNER JOIN vendegek ON foglalasok.vendeg = vendegek.vsorsz GROUP BY vendegek.vnev ASC
     const sql = "SELECT * from foglaltsag";
     db.query(sql, (err, result) => {
         if (err) throw err;

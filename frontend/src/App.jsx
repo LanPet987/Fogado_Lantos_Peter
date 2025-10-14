@@ -10,7 +10,6 @@ function App() {
 
   return (
     <>
-      <CustomNavbar />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Fooldal/>} />
