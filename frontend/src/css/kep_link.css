@@ -1,0 +1,16 @@
+.para-link {
+    display: flex;
+    align-items: left;
+    gap: 10px;
+}
+.szoveg{
+    font-weight: bold;
+    font-style: italic;
+    color: blue;
+}
+.holloko-div{
+    text-align: center;
+    margin: 5px;
+    border: 5px solid white;
+    border-radius: 3px;
+}

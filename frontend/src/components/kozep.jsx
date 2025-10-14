@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/hely.css"
-
+import kep from "../assets/ketagyas.jpg"
 function Kozep() {
     return (
         <div className="kozep">
@@ -12,6 +12,9 @@ function Kozep() {
                 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla saepe fugit asperiores numquam voluptate. Inventore ratione nemo dicta corporis! Odit iusto cumque consequatur iste officia veritatis, porro reprehenderit rerum quibusdam.</li>
                 <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, dicta alias voluptatem delectus fugit debitis perferendis eos ad minima possimus enim iste eveniet tenetur porro dolores atque ab recusandae? Quibusdam.</li>
             </ul>
+            <div className="kozep-kep-div">
+                <img src={kep} alt="Kozep kep" className="kozep-kep" />
+            </div>
         </div>
     );
 }
